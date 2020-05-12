@@ -4,6 +4,10 @@ var rickURL = 'https://rickandmortyapi.com/api/character/?name=rick&status=alive
 var mortyURL = 'https://rickandmortyapi.com/api/character/?name=morty&status=alive';
 var mortyDeck = [];
 var rickDeck = [];
+var currentCard;
+var currentOpponentCard;
+var yourScore = 0;
+var opponentsScore = 0;
 apiCall(rickURL);
 apiCall(mortyURL);
 
@@ -49,6 +53,43 @@ function fillCards (characterData, characterDeck) {
 }
 
 function pickRandomCard(playerDeck) {
+  var pickedIndex = Math.floor(Math.random() * playerDeck.length);
+    currentCard = playerDeck[pickedIndex];
+    console.log(currentCard);
+    document.getElementById('charImg').style.backgroundImage = "url("+currentCard.image+")";
+    document.getElementById('charStrength').textContent = currentCard.strength;
+  document.getElementById('charName').textContent = currentCard.name;
+  playerDeck.splice(pickedIndex,1);
+}
 
-    console.log(playerDeck[Math.floor(Math.random() * playerDeck.length)]);
+
+function opponentsTurn(playerDeck){
+  var pickedIndexOpponent = Math.floor(Math.random() * playerDeck.length);
+  currentOpponentCard = playerDeck[pickedIndexOpponent];
+
+  document.getElementById('charImgOpponent').style.backgroundImage = "url(" + currentOpponentCard.image + ")";
+  document.getElementById('charStrengthOpponent').textContent = currentOpponentCard.strength;
+  document.getElementById('charNameOpponent').textContent = currentOpponentCard.name;
+  playerDeck.splice(pickedIndexOpponent, 1);
+
+}
+
+function checkBattle (){
+  console.log(currentCard.strength);
+  console.log(currentOpponentCard.strength);
+  if( currentCard.strength > currentOpponentCard.strength){
+    console.log('you win this battle!');
+    yourScore ++
+    document.getElementById('theScore').textContent = yourScore;
+  } else if (currentCard.strength < currentOpponentCard.strength){
+    console.log('morty got ya this time');
+    opponentsScore ++
+    document.getElementById('opponentsScore').textContent = opponentsScore;
+  } else if (currentCard.strength === currentOpponentCard.strength){
+    console.log('tie play again');
+  }
+
+
+
+
 }

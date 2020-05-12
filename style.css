@@ -33,27 +33,62 @@
   background-color: darkmagenta;
 }
 
-.opponent-side > .deck-pile{
+/* .opponent-side {
 
     transform: rotate(180deg);
 
-}
+} */
 .player-side {
   background-color: darkorange;
 }
 
 .deck-pile{
   height: 100%;
-  width: 25%;
+  width: 40%;
   background-image: url(images/rick-morty-card-back.png);
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.played-card-slot{
+.played-card-slot, .opponent-played-card-slot{
 
   height: 100%;
-  width: 25%;
-  background-color: indigo;
+  width: 40%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+.played-card-slot{
+  background-image: url(images/card-front-player.png);
+
+}
+
+.opponent-played-card-slot{
+  background-image: url(images/opponent-card.png);
+}
+
+.character-img {
+  width: 80%;
+  height: 45%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.strength {
+  margin: 3rem 0 0;
+}
+
+.character-name{
+  margin: 0;
 }

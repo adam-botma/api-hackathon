@@ -14,21 +14,35 @@
     </div>
     <div class="row main-row">
       <div class="col-2 left-stats">
+        <div class="score">
+          <h2 class="title">Your Score:</h2>
+          <h2 id = "theScore" class="theScore">0</h2>
 
+        </div>
 
       </div>
       <div class="col-8 game-board">
         <div class="row opponent-side">
-          <div class="played-card-slot">
-
-          </div>
           <div class="deck-pile">
 
           </div>
+          <div class="opponent-played-card-slot">
+            <div id="charImgOpponent" class="character-img"></div>
+            <h2 id="charStrengthOpponent" class="strength"></h2>
+
+            <h2 id="charNameOpponent" class="character-name"></h2>
+
+          </div>
+
 
         </div>
         <div class="row player-side">
+
           <div class="played-card-slot">
+            <div id="charImg" class="character-img"></div>
+            <h2 id = "charStrength" class="strength"></h2>
+
+            <h2 id = "charName" class="character-name"></h2>
 
           </div>
           <div class="deck-pile">
@@ -38,7 +52,11 @@
         </div>
       </div>
       <div class="col-2 right-stats">
+        <div class="score">
+          <h2 class="title">Opponent's Score:</h2>
+          <h2 id="opponentsScore" class="theScore">0</h2>
 
+        </div>
 
       </div>
     </div>
