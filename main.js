@@ -9,9 +9,37 @@ var currentOpponentCard;
 var yourScore = 0;
 var opponentsScore = 0;
 var playCount= 0;
+var playerCard= document.getElementById('players-card');
+var opponentCard = document.getElementById('opponent-card-slot');
+document.getElementById('deal').addEventListener('click', playRound);
 apiCall(rickURL);
 apiCall(mortyURL);
 
+
+function playRound () {
+  pickRandomCard(rickDeck);
+    opponentsTurn(mortyDeck);
+    checkBattle();
+}
+
+
+function refreshBoard () {
+  playerCard.classList.add('hidden');
+}
+
+
+function checkScore(){
+if (playCount === 10) {
+  if (yourScore > opponentsScore) {
+    console.log('you won!');
+  } else if (opponentsScore > yourScore) {
+    console.log('you lost!');
+  } else {
+    console.log('tie?');
+  }
+
+}
+}
 
 function fillDecks (){
   fillCards (rickData, rickDeck);
@@ -61,6 +89,8 @@ function pickRandomCard(playerDeck) {
     document.getElementById('charStrength').textContent = currentCard.strength;
   document.getElementById('charName').textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
+  playerCard.style.backgroundImage = "url(images/card-front-player.png";
+
 }
 
 
@@ -72,6 +102,7 @@ function opponentsTurn(playerDeck){
   document.getElementById('charStrengthOpponent').textContent = currentOpponentCard.strength;
   document.getElementById('charNameOpponent').textContent = currentOpponentCard.name;
   playerDeck.splice(pickedIndexOpponent, 1);
+  opponentCard.style.backgroundImage = "url(images/opponent-card.png)";
 
 }
 
@@ -83,19 +114,16 @@ function checkBattle (){
     yourScore ++
     playCount ++
     document.getElementById('theScore').textContent = yourScore;
+    checkScore();
   } else if (currentCard.strength < currentOpponentCard.strength){
     console.log('morty got ya this time');
     opponentsScore ++
     playCount ++
     document.getElementById('opponentsScore').textContent = opponentsScore;
+    checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
     console.log('tie play again');
-
-
     playCount ++
+    checkScore();
   }
-
-
-
-
 }

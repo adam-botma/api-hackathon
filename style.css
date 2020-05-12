@@ -66,17 +66,6 @@
   align-items: center;
 }
 
-
-
-.played-card-slot{
-  background-image: url(images/card-front-player.png);
-
-}
-
-.opponent-played-card-slot{
-  background-image: url(images/opponent-card.png);
-}
-
 .character-img {
   width: 80%;
   height: 45%;
@@ -91,4 +80,13 @@
 
 .character-name{
   margin: 0;
+}
+
+.game-button {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+}
+
+.hidden {
+  display: none;
 }
