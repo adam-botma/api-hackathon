@@ -8,6 +8,7 @@ var currentCard;
 var currentOpponentCard;
 var yourScore = 0;
 var opponentsScore = 0;
+var playCount= 0;
 apiCall(rickURL);
 apiCall(mortyURL);
 
@@ -80,13 +81,18 @@ function checkBattle (){
   if( currentCard.strength > currentOpponentCard.strength){
     console.log('you win this battle!');
     yourScore ++
+    playCount ++
     document.getElementById('theScore').textContent = yourScore;
   } else if (currentCard.strength < currentOpponentCard.strength){
     console.log('morty got ya this time');
     opponentsScore ++
+    playCount ++
     document.getElementById('opponentsScore').textContent = opponentsScore;
   } else if (currentCard.strength === currentOpponentCard.strength){
     console.log('tie play again');
+
+
+    playCount ++
   }
 
 
