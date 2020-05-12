@@ -13,7 +13,9 @@ function fillDecks (){
   fillCards (mortyData, mortyDeck);
 
 }
+
 function apiCall (url){
+
   $.ajax({
     url: url,
     success: successfulCall,
@@ -22,11 +24,13 @@ function apiCall (url){
 }
 
   function successfulCall (e){
-  console.log('success!',e.results);
+
     if (e.results[0].name === 'Rick Sanchez' ){
     rickData = e.results;
+    fillCards(rickData, rickDeck);
     } else if (e.results[0].name === 'Morty Smith'){
       mortyData = e.results;
+      fillCards(mortyData, mortyDeck);
     }
 }
 
@@ -47,8 +51,4 @@ function fillCards (characterData, characterDeck) {
 function pickRandomCard(playerDeck) {
 
     console.log(playerDeck[Math.floor(Math.random() * playerDeck.length)]);
-
-
-
-
 }

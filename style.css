@@ -1,0 +1,59 @@
+.left-stats, .right-stats{
+  height: 600px;
+  background-color: aqua;
+}
+
+.game-board{
+  height: 600px;
+  background-color: darkblue;
+  margin: 0 3rem;
+}
+
+.heading-row{
+  display: flex;
+
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  background-color: darkgreen;
+}
+
+
+.opponent-side, .player-side {
+  height: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.opponent-side{
+  background-color: darkmagenta;
+}
+
+.opponent-side > .deck-pile{
+
+    transform: rotate(180deg);
+
+}
+.player-side {
+  background-color: darkorange;
+}
+
+.deck-pile{
+  height: 100%;
+  width: 25%;
+  background-image: url(images/rick-morty-card-back.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.played-card-slot{
+
+  height: 100%;
+  width: 25%;
+  background-color: indigo;
+}
