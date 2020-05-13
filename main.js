@@ -11,6 +11,9 @@ var opponentsScore = 0;
 var playCount= 0;
 var playerCard= document.getElementById('players-card');
 var opponentCard = document.getElementById('opponent-card-slot');
+var winnerModalText = document.getElementById('winner');
+var winnerModal = document.getElementById('winner-modal');
+document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
 apiCall(rickURL);
 apiCall(mortyURL);
@@ -29,16 +32,23 @@ function refreshBoard () {
 
 
 function checkScore(){
-if (playCount === 10) {
-  if (yourScore > opponentsScore) {
-    console.log('you won!');
-  } else if (opponentsScore > yourScore) {
-    console.log('you lost!');
-  } else {
-    console.log('tie?');
-  }
+  if (playCount === 10) {
+    if (yourScore > opponentsScore) {
+      console.log('you won');
+      winnerModalText.textContent ='you won!';
+      winnerModal.classList.remove('hidden');
 
-}
+    } else if (opponentsScore > yourScore) {
+      console.log('you lost');
+      winnerModalText.textContent = 'you lost!';
+      winnerModal.classList.remove('hidden');
+    } else {
+      console.log('you tied?!');
+      winnerModalText.textContent = 'a tie!?';
+      winnerModal.classList.remove('hidden');
+    }
+
+  }
 }
 
 function fillDecks (){
@@ -89,7 +99,7 @@ function pickRandomCard(playerDeck) {
     document.getElementById('charStrength').textContent = currentCard.strength;
   document.getElementById('charName').textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
-  playerCard.style.backgroundImage = "url(images/card-front-player.png";
+  // playerCard.style.backgroundImage = "url(images/card-front-player.png";
 
 }
 
@@ -126,4 +136,20 @@ function checkBattle (){
     playCount ++
     checkScore();
   }
+}
+
+
+function resetGame () {
+  winnerModal.classList.add('hidden');
+  apiCall(rickURL);
+  apiCall(mortyURL);
+  yourScore = 0;
+  opponentsScore = 0;
+  playCount = 0;
+  document.getElementById('theScore').textContent = 0;
+  document.getElementById('opponentsScore').textContent = 0;
+
+
+
+
 }
