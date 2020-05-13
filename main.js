@@ -47,6 +47,10 @@ function refreshBoard () {
 
 function checkScore(){
   if (playCount === 10) {
+    playerWinnerGIF.setAttribute('src', '');
+    opponentWinnerGIF.setAttribute('src', '');
+    // playerWinnerIndicator = "winner-div blink hidden";
+    // opponentWinnerIndicator = "winner-div blink hidden";
     if (yourScore > opponentsScore) {
       console.log('you won');
       winnerModalText.textContent ='you won!';

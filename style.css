@@ -172,6 +172,9 @@
 	100% { opacity: 0; }
 }
 
+.gif-img{
+  width:100%;
+}
 
 .hidden {
   display: none;
