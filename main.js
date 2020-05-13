@@ -13,6 +13,14 @@ var playerCard= document.getElementById('players-card');
 var opponentCard = document.getElementById('opponent-card-slot');
 var winnerModalText = document.getElementById('winner');
 var winnerModal = document.getElementById('winner-modal');
+var playerCardImage = document.getElementById('charImg');
+var playerCardStrength = document.getElementById('charStrength');
+var playerCardName = document.getElementById('charName');
+var opponentCardImage = document.getElementById('charImgOpponent');
+var opponentCardStrength = document.getElementById('charStrengthOpponent');
+var opponentCardName = document.getElementById('charNameOpponent');
+var playerWinnerIndicator = document.getElementById('player-winner');
+var opponentWinnerIndicator = document.getElementById('opponent-winner');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
 apiCall(rickURL);
@@ -81,7 +89,6 @@ function failedCall (e){
   console.log('fail', e);
 }
 
-// api for giphyb : https://api.giphy.com/v1/gifs/search?api_key=IfQlruZk7GWmDGMkJV0vuYJ7FIhwn0co&q=rick and morty&limit=25&offset=0&rating=G&lang=en
 
 function fillCards (characterData, characterDeck) {
 
@@ -92,14 +99,19 @@ function fillCards (characterData, characterDeck) {
 }
 
 function pickRandomCard(playerDeck) {
+  playerWinnerIndicator.className = "winner-div blink hidden";
+  opponentWinnerIndicator.className = "winner-div blink hidden";
   var pickedIndex = Math.floor(Math.random() * playerDeck.length);
     currentCard = playerDeck[pickedIndex];
     console.log(currentCard);
-    document.getElementById('charImg').style.backgroundImage = "url("+currentCard.image+")";
-    document.getElementById('charStrength').textContent = currentCard.strength;
-  document.getElementById('charName').textContent = currentCard.name;
+
+    playerCardImage.style.backgroundImage = "url("+currentCard.image+")";
+    playerCardImage.style.border = "solid white 4px";
+    playerCardStrength.textContent = currentCard.strength;
+    playerCardName.textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
-  // playerCard.style.backgroundImage = "url(images/card-front-player.png";
+  playerCard.style.backgroundImage = "url(images/front1.png";
+
 
 }
 
@@ -108,11 +120,12 @@ function opponentsTurn(playerDeck){
   var pickedIndexOpponent = Math.floor(Math.random() * playerDeck.length);
   currentOpponentCard = playerDeck[pickedIndexOpponent];
 
-  document.getElementById('charImgOpponent').style.backgroundImage = "url(" + currentOpponentCard.image + ")";
-  document.getElementById('charStrengthOpponent').textContent = currentOpponentCard.strength;
-  document.getElementById('charNameOpponent').textContent = currentOpponentCard.name;
+  opponentCardImage.style.backgroundImage = "url(" + currentOpponentCard.image + ")";
+  opponentCardImage.style.border = "solid white 4px";
+  opponentCardStrength.textContent = currentOpponentCard.strength;
+  opponentCardName.textContent = currentOpponentCard.name;
   playerDeck.splice(pickedIndexOpponent, 1);
-  opponentCard.style.backgroundImage = "url(images/opponent-card.png)";
+  opponentCard.style.backgroundImage = "url(images/front1.png)";
 
 }
 
@@ -123,12 +136,15 @@ function checkBattle (){
     console.log('you win this battle!');
     yourScore ++
     playCount ++
+    playerWinnerIndicator.classList.remove('hidden');
     document.getElementById('theScore').textContent = yourScore;
+
     checkScore();
   } else if (currentCard.strength < currentOpponentCard.strength){
     console.log('morty got ya this time');
     opponentsScore ++
     playCount ++
+    opponentWinnerIndicator.classList.remove('hidden');
     document.getElementById('opponentsScore').textContent = opponentsScore;
     checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
@@ -148,7 +164,18 @@ function resetGame () {
   playCount = 0;
   document.getElementById('theScore').textContent = 0;
   document.getElementById('opponentsScore').textContent = 0;
-
+  playerCard.style.backgroundImage = "";
+  opponentCard.style.backgroundImage = "";
+  playerCardImage.style.backgroundImage = '';
+  playerCardImage.style.border = "";
+  playerCardStrength.textContent = '';
+  playerCardName.textContent = '';
+  opponentCardImage.style.backgroundImage = '';
+  opponentCardImage.style.border = "";
+  opponentCardStrength.textContent = '';
+  opponentCardName.textContent = '';
+  playerWinnerIndicator.className = "winner-div blink hidden";
+  opponentWinnerIndicator.className = "winner-div blink hidden";
 
 
 

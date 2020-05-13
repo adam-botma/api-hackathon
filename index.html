@@ -15,11 +15,13 @@
     <div class="row main-row">
       <div class="col-2 left-stats">
         <div class="score">
-          <h2 class="title">Your Score:</h2>
+          <h2 class="score-title">Your Score:</h2>
           <h2 id = "theScore" class="theScore">0</h2>
-
         </div>
-
+        <div class="winner-div blink hidden" id="player-winner">
+          <h2 >winner</h2>
+        </div>
+        <div class="gif" id="player-gif"></div>
       </div>
       <div class="col-8 game-board">
         <div class="row opponent-side">
@@ -53,9 +55,10 @@
         <div class="score">
           <h2 class="title">Opponent's Score:</h2>
           <h2 id="opponentsScore" class="theScore">0</h2>
-
         </div>
-
+        <div class="winner-div blink hidden" id="opponent-winner">
+          <h2>winner</h2>
+        </div>
       </div>
     </div>
     <div class="footer">
@@ -81,6 +84,8 @@
 
   <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
+    <script src="apiKey.js"></script>
+    <script src="giphy.js"></script>
   <script src="deckbuild.js"></script>
   <script src="main.js"></script>
 </body>

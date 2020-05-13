@@ -5,7 +5,7 @@
 
 .game-board{
   height: 600px;
-  background-color: darkblue;
+  /* background-color: darkblue; */
   margin: 0 3rem;
 }
 
@@ -17,7 +17,7 @@
 .footer {
   display: flex;
   justify-content: center;
-  background-color: darkgreen;
+  /* background-color: darkgreen; */
 }
 
 
@@ -29,16 +29,11 @@
 }
 
 .opponent-side{
-  background-color: darkmagenta;
+  /* background-color: darkmagenta; */
 }
 
-/* .opponent-side {
-
-    transform: rotate(180deg);
-
-} */
 .player-side {
-  background-color: darkorange;
+  /* background-color: darkorange; */
 }
 
 .deck-pile{
@@ -60,22 +55,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .character-img {
-  width: 45%;
-  height: 45%;
+  width: 9rem;
+  height: 9rem;
   background-size: cover;
   background-repeat: no-repeat;
-  /* position: relative; */
+  /* border: solid white 4px; */
+
+}
+
+.score{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.score-title{
+
+
+
+
+}
+
+.game-button{
+
+
+
+	border-radius:6px;
+	border:4px solid #f50303;
+	display:inline-block;
+	color:#f50303;
+	font-size:23px;
+	font-weight:bold;
+	padding:12px 43px;
+
+
+}
+.game-button:active {
+	position:relative;
+  top:1px;
+
 }
 
 .strength {
   margin: 3rem 0 0;
+  color: white;
 }
 
 .character-name{
   margin: 0;
+  color: white;
 }
 
 .game-button {
@@ -100,6 +133,46 @@
 
   color: white;
 }
+
+.blink {
+	-webkit-animation: blink .75s linear infinite;
+	-moz-animation: blink .75s linear infinite;
+	-ms-animation: blink .75s linear infinite;
+	-o-animation: blink .75s linear infinite;
+	 animation: blink .75s linear infinite;
+}
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+
 .hidden {
   display: none;
 }

@@ -6,8 +6,4 @@ class Card {
     this.strength = strength
   }
 
-
-
-
-
 }
