@@ -21,13 +21,19 @@ var opponentCardStrength = document.getElementById('charStrengthOpponent');
 var opponentCardName = document.getElementById('charNameOpponent');
 var playerWinnerIndicator = document.getElementById('player-winner');
 var opponentWinnerIndicator = document.getElementById('opponent-winner');
+var playerWinnerGIF = document.getElementById('player-winner-gif');
+var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
 apiCall(rickURL);
 apiCall(mortyURL);
+buildGiphyLibrary(rickGiphyURL, rickGiphLibrary);
+buildGiphyLibrary(mortyGiphyURL, mortyGiphLibrary);
 
 
 function playRound () {
+  playerWinnerGIF.setAttribute('src', '');
+  opponentWinnerGIF.setAttribute('src','');
   pickRandomCard(rickDeck);
     opponentsTurn(mortyDeck);
     checkBattle();
@@ -138,7 +144,8 @@ function checkBattle (){
     playCount ++
     playerWinnerIndicator.classList.remove('hidden');
     document.getElementById('theScore').textContent = yourScore;
-
+    playerWinnerGIF.setAttribute('src',rickGiphLibrary[Math.floor(Math.random()
+    * rickGiphLibrary.length)]);
     checkScore();
   } else if (currentCard.strength < currentOpponentCard.strength){
     console.log('morty got ya this time');
@@ -146,6 +153,8 @@ function checkBattle (){
     playCount ++
     opponentWinnerIndicator.classList.remove('hidden');
     document.getElementById('opponentsScore').textContent = opponentsScore;
+    opponentWinnerGIF.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
+    * mortyGiphLibrary.length)]);
     checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
     console.log('tie play again');
