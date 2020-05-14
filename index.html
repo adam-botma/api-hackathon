@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Rick vs. Morty</title>
   <link rel="stylesheet" href="grid.css">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -19,7 +19,7 @@
           <h2 id = "theScore" class="theScore">0</h2>
         </div>
         <div class="winner-div blink hidden" id="player-winner">
-          <h2 >winner</h2>
+          <h2 id="blink-text-you" >winner</h2>
         </div>
         <div class="gif" id="player-gif">
           <img class = 'gif-img' id='player-winner-gif' src='' alt="">
@@ -55,11 +55,11 @@
       </div>
       <div class="col-3 right-stats">
         <div class="score">
-          <h2 class="title">Opponent's Score:</h2>
+          <h2 class="score-title">Morty's Score:</h2>
           <h2 id="opponentsScore" class="theScore">0</h2>
         </div>
         <div class="winner-div blink hidden" id="opponent-winner">
-          <h2>winner</h2>
+          <h2 id='blink-text-opponent'>winner</h2>
         </div>
         <div class="gif" id="opponent-gif">
           <img class= 'gif-img'id='opponent-winner-gif' src='' alt="">
@@ -81,8 +81,14 @@
 
   </div>
 
-  <div id='winner-modal' class="modal hidden">
-      <h1 id="winner" class="winnerText">Who Won?</h1>
+  <div id='tie-modal' class="modal hidden">
+    <img class='winner-gif' id='tie-gif' src="" alt="">
+    <h1 class="winnerText">You guy's tied this turn....</h1>
+
+  </div>
+  <div id='winner-modal' class="modal winner-modal hidden">
+      <img class='winner-gif'id= 'winner-gif' src="" alt="">
+      <h1 id="winner" class="winnerText"></h1>
       <button id='reset-button'>Play Again?</button>
     </div>
 
@@ -91,6 +97,7 @@
     crossorigin="anonymous"></script>
     <script src="apiKey.js"></script>
     <script src="giphy.js"></script>
+    <script src="audio.js"></script>
   <script src="deckbuild.js"></script>
   <script src="main.js"></script>
 </body>

@@ -1,12 +1,26 @@
+body {
+  /* background-image: url(/images/backdrop7.jpg); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: 0;
+  background-image: url('/images/backdrop1.png')
+}
+
+
 .left-stats, .right-stats{
   height: 600px;
-  background-color: aqua;
+  background-color: rgba(37, 222, 222, 0.39);
+  border: solid 5px rgb(37, 222, 222);
+  border-radius: 10px;
 }
 
 .game-board{
   height: 600px;
-  /* background-color: darkblue; */
+  background-color: rgba(0, 0, 128, .59);
+  border: solid 5px rgb(0, 0, 128);
+  border-radius: 10px;
   margin: 0 3rem;
+  padding-bottom: .5rem;
 }
 
 .heading-row{
@@ -20,12 +34,20 @@
   /* background-color: darkgreen; */
 }
 
+.winner-div > h2 {
+  text-align: center;
+  color: red;
+  border: solid red 5px;
+  width: 50%;
+  margin: 2rem auto;
+}
 
 .opponent-side, .player-side {
   height: 50%;
   width: 100%;
   display: flex;
   justify-content: center;
+
 }
 
 .opponent-side{
@@ -74,8 +96,8 @@
   align-items: center;
 }
 
-.score-title{
-
+.score{
+  color: white;
 
 
 
@@ -84,14 +106,15 @@
 .game-button{
 
 
-
+  background-color: rgba(255, 255, 255, .9);
 	border-radius:6px;
 	border:4px solid #f50303;
 	display:inline-block;
 	color:#f50303;
 	font-size:23px;
 	font-weight:bold;
-	padding:12px 43px;
+  padding:12px 43px;
+  outline: none;
 
 
 }
@@ -111,10 +134,7 @@
   color: white;
 }
 
-.game-button {
-  padding: 1rem 2rem;
-  font-size: 1.5rem;
-}
+
 
 
 
@@ -130,8 +150,16 @@
   justify-content: center;
   flex-direction: column;
   border: solid white 6px;
-
   color: white;
+}
+
+.winner-modal{
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  border: none;
 }
 
 .blink {
@@ -172,9 +200,29 @@
 	100% { opacity: 0; }
 }
 
+
+.winner-gif{
+  height: 50%;
+}
+
+
 .gif-img{
   width:100%;
+  margin: 0;
 }
+
+.score-title{
+  margin-bottom: 0;
+}
+.theScore{
+  margin-top: 0;
+}
+
+.heading-row > h1 {
+
+  color: white;
+}
+
 
 .hidden {
   display: none;

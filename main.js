@@ -23,6 +23,13 @@ var playerWinnerIndicator = document.getElementById('player-winner');
 var opponentWinnerIndicator = document.getElementById('opponent-winner');
 var playerWinnerGIF = document.getElementById('player-winner-gif');
 var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
+var winnerGifEnd = document.getElementById('winner-gif');
+var opponentWinnerText = document.getElementById('blink-text-opponent');
+var playerWinnerText = document.getElementById('blink-text-you');
+var quickAudio;
+var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
+var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
+var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
 apiCall(rickURL);
@@ -49,21 +56,22 @@ function checkScore(){
   if (playCount === 10) {
     playerWinnerGIF.setAttribute('src', '');
     opponentWinnerGIF.setAttribute('src', '');
-    // playerWinnerIndicator = "winner-div blink hidden";
-    // opponentWinnerIndicator = "winner-div blink hidden";
+    quickAudio.pause();
     if (yourScore > opponentsScore) {
-      console.log('you won');
-      winnerModalText.textContent ='you won!';
+      winnerModalText.textContent = 'you won!';
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/IdZpAop5IISbK2iePU/giphy.gif');
       winnerModal.classList.remove('hidden');
-
+      rickWin.play();
     } else if (opponentsScore > yourScore) {
-      console.log('you lost');
-      winnerModalText.textContent = 'you lost!';
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/SsZViiaRCjgp8fVexU/giphy.gif');
+      winnerModalText.textContent = 'Morty Somehow Beat you!?';
       winnerModal.classList.remove('hidden');
+      mortyWin.play();
     } else {
-      console.log('you tied?!');
-      winnerModalText.textContent = 'a tie!?';
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/Qs0QEnugOy0xIsFkpD/giphy.gif');
+      winnerModalText.textContent = 'wait... you can tie in war?';
       winnerModal.classList.remove('hidden');
+      tieSound.play();
     }
 
   }
@@ -109,12 +117,12 @@ function fillCards (characterData, characterDeck) {
 }
 
 function pickRandomCard(playerDeck) {
+  opponentWinnerText.textContent = 'winner';
+  playerWinnerText.textContent = "winner";
   playerWinnerIndicator.className = "winner-div blink hidden";
   opponentWinnerIndicator.className = "winner-div blink hidden";
   var pickedIndex = Math.floor(Math.random() * playerDeck.length);
     currentCard = playerDeck[pickedIndex];
-    console.log(currentCard);
-
     playerCardImage.style.backgroundImage = "url("+currentCard.image+")";
     playerCardImage.style.border = "solid white 4px";
     playerCardStrength.textContent = currentCard.strength;
@@ -139,11 +147,15 @@ function opponentsTurn(playerDeck){
 
 }
 
+function playGameAudio (whichArray){
+   quickAudio = new Audio(whichArray[Math.floor(Math.random()
+    * whichArray.length)]);
+  quickAudio.play();
+}
+
 function checkBattle (){
-  console.log(currentCard.strength);
-  console.log(currentOpponentCard.strength);
   if( currentCard.strength > currentOpponentCard.strength){
-    console.log('you win this battle!');
+    playGameAudio(rickAudioArray);
     yourScore ++
     playCount ++
     playerWinnerIndicator.classList.remove('hidden');
@@ -151,8 +163,9 @@ function checkBattle (){
     playerWinnerGIF.setAttribute('src',rickGiphLibrary[Math.floor(Math.random()
     * rickGiphLibrary.length)]);
     checkScore();
+
   } else if (currentCard.strength < currentOpponentCard.strength){
-    console.log('morty got ya this time');
+    playGameAudio(mortyAudioArray);
     opponentsScore ++
     playCount ++
     opponentWinnerIndicator.classList.remove('hidden');
@@ -161,7 +174,10 @@ function checkBattle (){
     * mortyGiphLibrary.length)]);
     checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
-    console.log('tie play again');
+    opponentWinnerText.textContent = 'TIE';
+    playerWinnerText.textContent = "TIE";
+    opponentWinnerIndicator.classList.remove('hidden');
+    playerWinnerIndicator.classList.remove('hidden');
     playCount ++
     checkScore();
   }
@@ -189,7 +205,18 @@ function resetGame () {
   opponentCardName.textContent = '';
   playerWinnerIndicator.className = "winner-div blink hidden";
   opponentWinnerIndicator.className = "winner-div blink hidden";
+}
+
+var imgPlayer1 = document.getElementById('player-winner-gif');
+var imgPlayer2 = document.getElementById('opponent-winner-gif');
+imgPlayer1.onload = resizeGIF(imgPlayer1);
+imgPlayer2.onload = resizeGIF(imgPlayer2);
 
 
 
+function resizeGIF(img) {
+  if (img.height > img.width) {
+    img.height = '100%';
+    img.width = 'auto';
+  }
 }
