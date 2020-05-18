@@ -8,10 +8,13 @@ body {
 
 
 .left-stats, .right-stats{
-  height: 600px;
-  background-color: rgba(37, 222, 222, 0.39);
-  border: solid 5px rgb(37, 222, 222);
+  height: 450px;
+  /* background-color: rgba(37, 222, 222, 0.39);
+  border: solid 5px rgb(37, 222, 222); */
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .game-board{
@@ -97,7 +100,7 @@ body {
 }
 
 .score{
-  color: white;
+  color: black;
 
 
 
@@ -220,10 +223,34 @@ body {
 
 .heading-row > h1 {
 
-  color: white;
+  color: black;
 }
 
 
 .hidden {
   display: none;
 }
+
+.television, .gif {
+  position: relative;
+  top: 0;
+  left: 0;
+  /* width: 100%;
+  height: 100%; */
+}
+
+
+.tv-img{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 325px;
+
+}
+
+.gif{
+position: absolute;
+  top: 115px;
+  left: 20px;
+z-index: -1;
+width: 260px;

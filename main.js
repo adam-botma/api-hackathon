@@ -26,6 +26,7 @@ var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
 var winnerGifEnd = document.getElementById('winner-gif');
 var opponentWinnerText = document.getElementById('blink-text-opponent');
 var playerWinnerText = document.getElementById('blink-text-you');
+var tvGif = document.getElementById('tv-gif');
 var quickAudio;
 var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
 var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
@@ -65,8 +66,10 @@ function failedCall(e) {
 
 
 function playRound () {
-  playerWinnerGIF.setAttribute('src', '');
-  opponentWinnerGIF.setAttribute('src','');
+  opponentCard.style.border = 'none';
+  playerCard.style.border = 'none';
+  playerCard.className = "played-card-slot";
+  opponentCard.className = "opponent-played-card-slot";
   pickRandomCard(rickDeck);
     opponentsTurn(mortyDeck);
     checkBattle();
@@ -146,9 +149,12 @@ function checkBattle (){
     playGameAudio(rickAudioArray);
     yourScore ++
     playCount ++
-    playerWinnerIndicator.classList.remove('hidden');
+    // playerWinnerIndicator.classList.remove('hidden');
+    playerCard.style.border = 'solid 5px green ';
+    playerCard.style.borderRadius = '5px';
+    playerCard.classList.add('blink');
     document.getElementById('theScore').textContent = yourScore;
-    playerWinnerGIF.setAttribute('src',rickGiphLibrary[Math.floor(Math.random()
+    tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
     * rickGiphLibrary.length)]);
     checkScore();
 
@@ -156,9 +162,12 @@ function checkBattle (){
     playGameAudio(mortyAudioArray);
     opponentsScore ++
     playCount ++
-    opponentWinnerIndicator.classList.remove('hidden');
+    // opponentWinnerIndicator.classList.remove('hidden');
+    opponentCard.style.border = 'solid 5px green ';
+    opponentCard.style.borderRadius = '5px';
+    opponentCard.classList.add('blink');
     document.getElementById('opponentsScore').textContent = opponentsScore;
-    opponentWinnerGIF.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
+    tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
     * mortyGiphLibrary.length)]);
     checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
@@ -210,14 +219,14 @@ function startApp() {
 
 
 // Quick Check incase a none square gif slips through
-var imgPlayer1 = document.getElementById('player-winner-gif');
-var imgPlayer2 = document.getElementById('opponent-winner-gif');
-imgPlayer1.onload = resizeGIF(imgPlayer1);
-imgPlayer2.onload = resizeGIF(imgPlayer2);
+// var imgPlayer1 = document.getElementById('player-winner-gif');
+// var imgPlayer2 = document.getElementById('opponent-winner-gif');
+// tvGif.onload = resizeGIF(tvGif);
+// // imgPlayer2.onload = resizeGIF(imgPlayer2);
 
-function resizeGIF(img) {
-  if (img.height > img.width) {
-    img.height = '100%';
-    img.width = 'auto';
-  }
-}
+// function resizeGIF(img) {
+//   if (img.height > img.width) {
+//     img.height = '100%';
+//     img.width = 'auto';
+//   }
+// }
