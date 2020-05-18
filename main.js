@@ -11,43 +11,32 @@ var opponentsScore = 0;
 var playCount= 0;
 var playerCard= document.getElementById('players-card');
 var opponentCard = document.getElementById('opponent-card-slot');
+var winnerModalText = document.getElementById('winner');
+var winnerModal = document.getElementById('winner-modal');
+var playerCardImage = document.getElementById('charImg');
+var playerCardStrength = document.getElementById('charStrength');
+var playerCardName = document.getElementById('charName');
+var opponentCardImage = document.getElementById('charImgOpponent');
+var opponentCardStrength = document.getElementById('charStrengthOpponent');
+var opponentCardName = document.getElementById('charNameOpponent');
+var playerWinnerIndicator = document.getElementById('player-winner');
+var opponentWinnerIndicator = document.getElementById('opponent-winner');
+var playerWinnerGIF = document.getElementById('player-winner-gif');
+var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
+var winnerGifEnd = document.getElementById('winner-gif');
+var opponentWinnerText = document.getElementById('blink-text-opponent');
+var playerWinnerText = document.getElementById('blink-text-you');
+var quickAudio;
+var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
+var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
+var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
+document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
-apiCall(rickURL);
-apiCall(mortyURL);
+startApp();
 
 
-function playRound () {
-  pickRandomCard(rickDeck);
-    opponentsTurn(mortyDeck);
-    checkBattle();
-}
 
-
-function refreshBoard () {
-  playerCard.classList.add('hidden');
-}
-
-
-function checkScore(){
-if (playCount === 10) {
-  if (yourScore > opponentsScore) {
-    console.log('you won!');
-  } else if (opponentsScore > yourScore) {
-    console.log('you lost!');
-  } else {
-    console.log('tie?');
-  }
-
-}
-}
-
-function fillDecks (){
-  fillCards (rickData, rickDeck);
-  fillCards (mortyData, mortyDeck);
-
-}
-
-function apiCall (url){
+function apiCall(url) {
 
   $.ajax({
     url: url,
@@ -56,22 +45,63 @@ function apiCall (url){
   })
 }
 
-  function successfulCall (e){
+function successfulCall(e) {
 
-    if (e.results[0].name === 'Rick Sanchez' ){
+  if (e.results[0].name === 'Rick Sanchez') {
     rickData = e.results;
     fillCards(rickData, rickDeck);
-    } else if (e.results[0].name === 'Morty Smith'){
-      mortyData = e.results;
-      fillCards(mortyData, mortyDeck);
-    }
+  } else if (e.results[0].name === 'Morty Smith') {
+    mortyData = e.results;
+    fillCards(mortyData, mortyDeck);
+  }
 }
 
-function failedCall (e){
+function failedCall(e) {
   console.log('fail', e);
 }
 
-// api for giphyb : https://api.giphy.com/v1/gifs/search?api_key=IfQlruZk7GWmDGMkJV0vuYJ7FIhwn0co&q=rick and morty&limit=25&offset=0&rating=G&lang=en
+
+
+
+
+function playRound () {
+  playerWinnerGIF.setAttribute('src', '');
+  opponentWinnerGIF.setAttribute('src','');
+  pickRandomCard(rickDeck);
+    opponentsTurn(mortyDeck);
+    checkBattle();
+}
+
+
+
+
+
+function checkScore(){
+  if (playCount === 10) {
+    playerWinnerGIF.setAttribute('src', '');
+    opponentWinnerGIF.setAttribute('src', '');
+    quickAudio.pause();
+    if (yourScore > opponentsScore) {
+      winnerModalText.textContent = 'you won!';
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/IdZpAop5IISbK2iePU/giphy.gif');
+      winnerModal.classList.remove('hidden');
+      rickWin.play();
+    } else if (opponentsScore > yourScore) {
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/SsZViiaRCjgp8fVexU/giphy.gif');
+      winnerModalText.textContent = 'Morty Somehow Beat you!?';
+      winnerModal.classList.remove('hidden');
+      mortyWin.play();
+    } else {
+      winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/Qs0QEnugOy0xIsFkpD/giphy.gif');
+      winnerModalText.textContent = 'wait... you can tie in war?';
+      winnerModal.classList.remove('hidden');
+      tieSound.play();
+    }
+
+  }
+}
+
+
 
 function fillCards (characterData, characterDeck) {
 
@@ -82,15 +112,18 @@ function fillCards (characterData, characterDeck) {
 }
 
 function pickRandomCard(playerDeck) {
+  opponentWinnerText.textContent = 'winner';
+  playerWinnerText.textContent = "winner";
+  playerWinnerIndicator.className = "winner-div blink hidden";
+  opponentWinnerIndicator.className = "winner-div blink hidden";
   var pickedIndex = Math.floor(Math.random() * playerDeck.length);
     currentCard = playerDeck[pickedIndex];
-    console.log(currentCard);
-    document.getElementById('charImg').style.backgroundImage = "url("+currentCard.image+")";
-    document.getElementById('charStrength').textContent = currentCard.strength;
-  document.getElementById('charName').textContent = currentCard.name;
+    playerCardImage.style.backgroundImage = "url("+currentCard.image+")";
+    playerCardImage.style.border = "solid white 4px";
+    playerCardStrength.textContent = currentCard.strength;
+    playerCardName.textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
-  playerCard.style.backgroundImage = "url(images/card-front-player.png";
-
+  playerCard.style.backgroundImage = "url(images/front1.png";
 }
 
 
@@ -98,32 +131,93 @@ function opponentsTurn(playerDeck){
   var pickedIndexOpponent = Math.floor(Math.random() * playerDeck.length);
   currentOpponentCard = playerDeck[pickedIndexOpponent];
 
-  document.getElementById('charImgOpponent').style.backgroundImage = "url(" + currentOpponentCard.image + ")";
-  document.getElementById('charStrengthOpponent').textContent = currentOpponentCard.strength;
-  document.getElementById('charNameOpponent').textContent = currentOpponentCard.name;
+  opponentCardImage.style.backgroundImage = "url(" + currentOpponentCard.image + ")";
+  opponentCardImage.style.border = "solid white 4px";
+  opponentCardStrength.textContent = currentOpponentCard.strength;
+  opponentCardName.textContent = currentOpponentCard.name;
   playerDeck.splice(pickedIndexOpponent, 1);
-  opponentCard.style.backgroundImage = "url(images/opponent-card.png)";
+  opponentCard.style.backgroundImage = "url(images/front1.png)";
 
 }
 
+
 function checkBattle (){
-  console.log(currentCard.strength);
-  console.log(currentOpponentCard.strength);
   if( currentCard.strength > currentOpponentCard.strength){
-    console.log('you win this battle!');
+    playGameAudio(rickAudioArray);
     yourScore ++
     playCount ++
+    playerWinnerIndicator.classList.remove('hidden');
     document.getElementById('theScore').textContent = yourScore;
+    playerWinnerGIF.setAttribute('src',rickGiphLibrary[Math.floor(Math.random()
+    * rickGiphLibrary.length)]);
     checkScore();
+
   } else if (currentCard.strength < currentOpponentCard.strength){
-    console.log('morty got ya this time');
+    playGameAudio(mortyAudioArray);
     opponentsScore ++
     playCount ++
+    opponentWinnerIndicator.classList.remove('hidden');
     document.getElementById('opponentsScore').textContent = opponentsScore;
+    opponentWinnerGIF.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
+    * mortyGiphLibrary.length)]);
     checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
-    console.log('tie play again');
+    opponentWinnerText.textContent = 'TIE';
+    playerWinnerText.textContent = "TIE";
+    opponentWinnerIndicator.classList.remove('hidden');
+    playerWinnerIndicator.classList.remove('hidden');
     playCount ++
     checkScore();
+  }
+}
+
+function playGameAudio(whichArray) {
+  quickAudio = new Audio(whichArray[Math.floor(Math.random()
+    * whichArray.length)]);
+  quickAudio.play();
+}
+
+
+function resetGame () {
+  winnerModal.classList.add('hidden');
+  apiCall(rickURL);
+  apiCall(mortyURL);
+  yourScore = 0;
+  opponentsScore = 0;
+  playCount = 0;
+  document.getElementById('theScore').textContent = 0;
+  document.getElementById('opponentsScore').textContent = 0;
+  playerCard.style.backgroundImage = "";
+  opponentCard.style.backgroundImage = "";
+  playerCardImage.style.backgroundImage = '';
+  playerCardImage.style.border = "";
+  playerCardStrength.textContent = '';
+  playerCardName.textContent = '';
+  opponentCardImage.style.backgroundImage = '';
+  opponentCardImage.style.border = "";
+  opponentCardStrength.textContent = '';
+  opponentCardName.textContent = '';
+  playerWinnerIndicator.className = "winner-div blink hidden";
+  opponentWinnerIndicator.className = "winner-div blink hidden";
+}
+
+function startApp() {
+  apiCall(rickURL);
+  apiCall(mortyURL);
+  buildGiphyLibrary(rickGiphyURL, rickGiphLibrary);
+  buildGiphyLibrary(mortyGiphyURL, mortyGiphLibrary);
+}
+
+
+// Quick Check incase a none square gif slips through
+var imgPlayer1 = document.getElementById('player-winner-gif');
+var imgPlayer2 = document.getElementById('opponent-winner-gif');
+imgPlayer1.onload = resizeGIF(imgPlayer1);
+imgPlayer2.onload = resizeGIF(imgPlayer2);
+
+function resizeGIF(img) {
+  if (img.height > img.width) {
+    img.height = '100%';
+    img.width = 'auto';
   }
 }
