@@ -32,10 +32,36 @@ var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/li
 var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
-apiCall(rickURL);
-apiCall(mortyURL);
-buildGiphyLibrary(rickGiphyURL, rickGiphLibrary);
-buildGiphyLibrary(mortyGiphyURL, mortyGiphLibrary);
+startApp();
+
+
+
+function apiCall(url) {
+
+  $.ajax({
+    url: url,
+    success: successfulCall,
+    error: failedCall,
+  })
+}
+
+function successfulCall(e) {
+
+  if (e.results[0].name === 'Rick Sanchez') {
+    rickData = e.results;
+    fillCards(rickData, rickDeck);
+  } else if (e.results[0].name === 'Morty Smith') {
+    mortyData = e.results;
+    fillCards(mortyData, mortyDeck);
+  }
+}
+
+function failedCall(e) {
+  console.log('fail', e);
+}
+
+
+
 
 
 function playRound () {
@@ -47,9 +73,7 @@ function playRound () {
 }
 
 
-function refreshBoard () {
-  playerCard.classList.add('hidden');
-}
+
 
 
 function checkScore(){
@@ -77,35 +101,6 @@ function checkScore(){
   }
 }
 
-function fillDecks (){
-  fillCards (rickData, rickDeck);
-  fillCards (mortyData, mortyDeck);
-
-}
-
-function apiCall (url){
-
-  $.ajax({
-    url: url,
-    success: successfulCall,
-    error: failedCall,
-  })
-}
-
-  function successfulCall (e){
-
-    if (e.results[0].name === 'Rick Sanchez' ){
-    rickData = e.results;
-    fillCards(rickData, rickDeck);
-    } else if (e.results[0].name === 'Morty Smith'){
-      mortyData = e.results;
-      fillCards(mortyData, mortyDeck);
-    }
-}
-
-function failedCall (e){
-  console.log('fail', e);
-}
 
 
 function fillCards (characterData, characterDeck) {
@@ -129,8 +124,6 @@ function pickRandomCard(playerDeck) {
     playerCardName.textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
   playerCard.style.backgroundImage = "url(images/front1.png";
-
-
 }
 
 
@@ -147,11 +140,6 @@ function opponentsTurn(playerDeck){
 
 }
 
-function playGameAudio (whichArray){
-   quickAudio = new Audio(whichArray[Math.floor(Math.random()
-    * whichArray.length)]);
-  quickAudio.play();
-}
 
 function checkBattle (){
   if( currentCard.strength > currentOpponentCard.strength){
@@ -183,6 +171,12 @@ function checkBattle (){
   }
 }
 
+function playGameAudio(whichArray) {
+  quickAudio = new Audio(whichArray[Math.floor(Math.random()
+    * whichArray.length)]);
+  quickAudio.play();
+}
+
 
 function resetGame () {
   winnerModal.classList.add('hidden');
@@ -207,12 +201,19 @@ function resetGame () {
   opponentWinnerIndicator.className = "winner-div blink hidden";
 }
 
+function startApp() {
+  apiCall(rickURL);
+  apiCall(mortyURL);
+  buildGiphyLibrary(rickGiphyURL, rickGiphLibrary);
+  buildGiphyLibrary(mortyGiphyURL, mortyGiphLibrary);
+}
+
+
+// Quick Check incase a none square gif slips through
 var imgPlayer1 = document.getElementById('player-winner-gif');
 var imgPlayer2 = document.getElementById('opponent-winner-gif');
 imgPlayer1.onload = resizeGIF(imgPlayer1);
 imgPlayer2.onload = resizeGIF(imgPlayer2);
-
-
 
 function resizeGIF(img) {
   if (img.height > img.width) {
