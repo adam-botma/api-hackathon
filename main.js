@@ -32,7 +32,7 @@ var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/O
 var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
 var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
 document.getElementById('reset-button').addEventListener('click', resetGame);
-document.getElementById('deal').addEventListener('click', playRound);
+// document.getElementById('deal').addEventListener('click', playRound);
 startApp();
 
 

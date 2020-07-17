@@ -4,12 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rick vs. Morty</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="grid.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
-    <div class="row heading-row">
+    <div class="col-5 left-column">
+      <div class="rick-score">
+        <p class='score'>0</p>
+      </div>
+      <div class="morty-score">
+        <p class='score'>0</p>
+      </div>
+    </div>
+    <div class="col-2 center-column">
+      <div class="rick-card"></div>
+      <div class="morty-card"></div>
+    </div>
+    <div class="col-5 right-column">
+      <div class="picture-frame"></div>
+      <div class="result">
+
+        <h2>Morty wins</h2>
+      </div>
+      <button id="deal" class="game-button">PLAY CARD</button>
+
+    </div>
+  </div>
+
+  <div id='tie-modal' class="modal hidden">
+    <img class='winner-gif' id='tie-gif' src="" alt="">
+    <h1 class="winnerText">You guy's tied this turn....</h1>
+
+  </div>
+  <div id='winner-modal' class="modal winner-modal hidden">
+      <img class='winner-gif'id= 'winner-gif' src="" alt="">
+      <h1 id="winner" class="winnerText"></h1>
+      <button id='reset-button'>Play Again?</button>
+    </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+    crossorigin="anonymous"></script>
+    <script src="apiKey.js"></script>
+    <script src="giphy.js"></script>
+    <script src="audio.js"></script>
+  <script src="deckbuild.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- <div class="row heading-row">
       <h1>RICK vs. MORTY</h1>
     </div>
     <div class="row main-row">
@@ -63,7 +112,7 @@
         </div>
         <div class="gif" id="opponent-gif">
         </div>
-        <div class="television"><img class="tv-img" src="images/tv.png" alt=""><img id="tv-gif" class="gif"
+        <div class="television"><img id="tv-gif" class="gif"
             src="https://media.giphy.com/media/9zXWAIcr6jycE/giphy.gif" alt=""></div>
       </div>
     </div>
@@ -71,28 +120,4 @@
 
       <button id="deal" class="game-button">PLAY CARD</button>
     </div>
-
-
-  </div>
-
-  <div id='tie-modal' class="modal hidden">
-    <img class='winner-gif' id='tie-gif' src="" alt="">
-    <h1 class="winnerText">You guy's tied this turn....</h1>
-
-  </div>
-  <div id='winner-modal' class="modal winner-modal hidden">
-      <img class='winner-gif'id= 'winner-gif' src="" alt="">
-      <h1 id="winner" class="winnerText"></h1>
-      <button id='reset-button'>Play Again?</button>
-    </div>
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
-    crossorigin="anonymous"></script>
-    <script src="apiKey.js"></script>
-    <script src="giphy.js"></script>
-    <script src="audio.js"></script>
-  <script src="deckbuild.js"></script>
-  <script src="main.js"></script>
-</body>
-</html>
+ -->
