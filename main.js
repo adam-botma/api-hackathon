@@ -24,8 +24,11 @@ var opponentWinnerIndicator = document.getElementById('opponent-winner');
 var playerWinnerGIF = document.getElementById('player-winner-gif');
 var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
 var winnerGifEnd = document.getElementById('winner-gif');
-var opponentWinnerText = document.getElementById('blink-text-opponent');
-var playerWinnerText = document.getElementById('blink-text-you');
+const indicatorText = document.getElementById('indicator-text');
+const ricksCardToFlip = document.getElementById('ricks-actual-card');
+const mortysCardToFlip = document.getElementById('mortys-actual-card');
+// var opponentWinnerText = document.getElementById('blink-text-opponent');
+// var playerWinnerText = document.getElementById('blink-text-you');
 var tvGif = document.getElementById('tv-gif');
 var quickAudio;
 var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
@@ -68,8 +71,8 @@ function failedCall(e) {
 function playRound () {
   pickRandomCard(rickDeck);
   opponentsTurn(mortyDeck);
-document.getElementById('ricks-actual-card').classList.add('the-card-flip');
-setTimeout(()=> document.getElementById('mortys-actual-card').classList.add('the-card-flip'), 500);
+  ricksCardToFlip.classList.add('the-card-flip');
+  setTimeout(()=> mortysCardToFlip.classList.add('the-card-flip'), 500);
   setTimeout(checkBattle, 1000 )
 //   opponentCard.style.border = 'none';
 //   playerCard.style.border = 'none';
@@ -159,6 +162,7 @@ function checkBattle (){
     // playerCard.style.borderRadius = '5px';
     // playerCard.classList.add('blink');
     document.getElementById('ricks-score').textContent = yourScore;
+    indicatorText.textContent = 'Rick Wins'
     // tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
     // * rickGiphLibrary.length)]);
     // checkScore();
@@ -172,6 +176,7 @@ function checkBattle (){
     // opponentCard.style.borderRadius = '5px';
     // opponentCard.classList.add('blink');
     document.getElementById('mortys-score').textContent = opponentsScore;
+    indicatorText.textContent = 'Morty Wins'
     // tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
     // * mortyGiphLibrary.length)]);
     // checkScore();
@@ -180,9 +185,14 @@ function checkBattle (){
     // playerWinnerText.textContent = "TIE";
     // opponentWinnerIndicator.classList.remove('hidden');
     // playerWinnerIndicator.classList.remove('hidden');
+    indicatorText = 'you tied'
     playCount ++
     // checkScore();
   }
+  setTimeout(()=> {
+    ricksCardToFlip.classList.remove('the-card-flip');
+    mortysCardToFlip.classList.remove('the-card-flip');
+  }, 2000)
 }
 
 function playGameAudio(whichArray) {
