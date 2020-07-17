@@ -162,7 +162,9 @@ function checkBattle (){
     // playerCard.style.borderRadius = '5px';
     // playerCard.classList.add('blink');
     document.getElementById('ricks-score').textContent = yourScore;
-    indicatorText.textContent = 'Rick Wins'
+    indicatorText.textContent = 'Rick Wins';
+    indicatorText.classList.remove('hidden');
+    indicatorText.classList.add('blink');
     // tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
     // * rickGiphLibrary.length)]);
     // checkScore();
@@ -177,6 +179,8 @@ function checkBattle (){
     // opponentCard.classList.add('blink');
     document.getElementById('mortys-score').textContent = opponentsScore;
     indicatorText.textContent = 'Morty Wins'
+    indicatorText.classList.remove('hidden');
+    indicatorText.classList.add('blink');
     // tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
     // * mortyGiphLibrary.length)]);
     // checkScore();
@@ -185,14 +189,18 @@ function checkBattle (){
     // playerWinnerText.textContent = "TIE";
     // opponentWinnerIndicator.classList.remove('hidden');
     // playerWinnerIndicator.classList.remove('hidden');
-    indicatorText = 'you tied'
+    indicatorText.textContent = 'you tied';
+    indicatorText.classList.remove('hidden');
+    indicatorText.classList.add('blink');
     playCount ++
     // checkScore();
   }
   setTimeout(()=> {
     ricksCardToFlip.classList.remove('the-card-flip');
     mortysCardToFlip.classList.remove('the-card-flip');
-  }, 2000)
+    indicatorText.classList.remove('blink');
+    indicatorText.classList.add('hidden');
+  }, 3000)
 }
 
 function playGameAudio(whichArray) {

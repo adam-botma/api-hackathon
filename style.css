@@ -385,6 +385,10 @@ width: 260px;
 
 }
 
+.result {
+  height: 105px;
+}
+
 .result > h2 {
   text-align: center;
   color: red;
