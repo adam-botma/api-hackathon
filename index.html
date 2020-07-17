@@ -12,30 +12,37 @@
   <div class="container">
     <div class="col-5 left-column">
       <div class="morty-score">
-        <p class='score'>0</p>
+        <p id="mortys-score" class='score'>0</p>
       </div>
       <div class="rick-score">
-        <p class='score'>0</p>
+        <p id="ricks-score" class='score'>0</p>
       </div>
     </div>
     <div class="col-2 center-column">
       <div class="morty-card">
         <div id="mortys-actual-card" class="the-card">
           <div class="card-front"></div>
-          <div class="card-back"></div>
+          <div class="card-back">
+            <div id="charImgOpponent" class="character-img"></div>
+            <h2 id="charStrengthOpponent" class="strength">10</h2>
+            <h3 id="charNameOpponent" class="character-name">test name</h3>
+          </div>
         </div>
       </div>
       <div class="rick-card">
         <div id="ricks-actual-card" class="the-card">
           <div class="card-front"></div>
-          <div class="card-back"></div>
+          <div id="ricks-played-card" class="card-back">
+            <div id="charImg" class="character-img"></div>
+            <h2 id="charStrength" class="strength">10</h2>
+            <h3 id="charName" class="character-name">test name</h3>
+          </div>
         </div>
       </div>
     </div>
     <div class="col-5 right-column">
       <div class="picture-frame"></div>
       <div class="result">
-
         <h2>Morty wins</h2>
       </div>
       <button id="deal" class="game-button">PLAY CARD</button>

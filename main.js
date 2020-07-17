@@ -9,7 +9,7 @@ var currentOpponentCard;
 var yourScore = 0;
 var opponentsScore = 0;
 var playCount= 0;
-var playerCard= document.getElementById('players-card');
+var playerCard= document.getElementById('ricks-played-card');
 var opponentCard = document.getElementById('opponent-card-slot');
 var winnerModalText = document.getElementById('winner');
 var winnerModal = document.getElementById('winner-modal');
@@ -66,9 +66,11 @@ function failedCall(e) {
 
 
 function playRound () {
+  pickRandomCard(rickDeck);
+  opponentsTurn(mortyDeck);
 document.getElementById('ricks-actual-card').classList.add('the-card-flip');
 setTimeout(()=> document.getElementById('mortys-actual-card').classList.add('the-card-flip'), 500);
-
+  setTimeout(checkBattle, 1000 )
 //   opponentCard.style.border = 'none';
 //   playerCard.style.border = 'none';
 //   playerCard.className = "played-card-slot";
@@ -118,18 +120,18 @@ function fillCards (characterData, characterDeck) {
 }
 
 function pickRandomCard(playerDeck) {
-  opponentWinnerText.textContent = 'winner';
-  playerWinnerText.textContent = "winner";
-  playerWinnerIndicator.className = "winner-div blink hidden";
-  opponentWinnerIndicator.className = "winner-div blink hidden";
+  // opponentWinnerText.textContent = 'winner';
+  // playerWinnerText.textContent = "winner";
+  // playerWinnerIndicator.className = "winner-div blink hidden";
+  // opponentWinnerIndicator.className = "winner-div blink hidden";
   var pickedIndex = Math.floor(Math.random() * playerDeck.length);
     currentCard = playerDeck[pickedIndex];
     playerCardImage.style.backgroundImage = "url("+currentCard.image+")";
-    playerCardImage.style.border = "solid white 4px";
+    // playerCardImage.style.border = "solid white 4px";
     playerCardStrength.textContent = currentCard.strength;
     playerCardName.textContent = currentCard.name;
   playerDeck.splice(pickedIndex,1);
-  playerCard.style.backgroundImage = "url(images/front1.png";
+  // playerCard.style.backgroundImage = "url(images/front1.png";
 }
 
 
@@ -138,11 +140,11 @@ function opponentsTurn(playerDeck){
   currentOpponentCard = playerDeck[pickedIndexOpponent];
 
   opponentCardImage.style.backgroundImage = "url(" + currentOpponentCard.image + ")";
-  opponentCardImage.style.border = "solid white 4px";
+  // opponentCardImage.style.border = "solid white 4px";
   opponentCardStrength.textContent = currentOpponentCard.strength;
   opponentCardName.textContent = currentOpponentCard.name;
   playerDeck.splice(pickedIndexOpponent, 1);
-  opponentCard.style.backgroundImage = "url(images/front1.png)";
+  // opponentCard.style.backgroundImage = "url(images/front1.png)";
 
 }
 
@@ -153,33 +155,33 @@ function checkBattle (){
     yourScore ++
     playCount ++
     // playerWinnerIndicator.classList.remove('hidden');
-    playerCard.style.border = 'solid 5px green ';
-    playerCard.style.borderRadius = '5px';
-    playerCard.classList.add('blink');
-    document.getElementById('theScore').textContent = yourScore;
-    tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
-    * rickGiphLibrary.length)]);
-    checkScore();
+    // playerCard.style.border = 'solid 5px green ';
+    // playerCard.style.borderRadius = '5px';
+    // playerCard.classList.add('blink');
+    document.getElementById('ricks-score').textContent = yourScore;
+    // tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
+    // * rickGiphLibrary.length)]);
+    // checkScore();
 
   } else if (currentCard.strength < currentOpponentCard.strength){
     playGameAudio(mortyAudioArray);
     opponentsScore ++
     playCount ++
     // opponentWinnerIndicator.classList.remove('hidden');
-    opponentCard.style.border = 'solid 5px green ';
-    opponentCard.style.borderRadius = '5px';
-    opponentCard.classList.add('blink');
-    document.getElementById('opponentsScore').textContent = opponentsScore;
-    tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
-    * mortyGiphLibrary.length)]);
-    checkScore();
+    // opponentCard.style.border = 'solid 5px green ';
+    // opponentCard.style.borderRadius = '5px';
+    // opponentCard.classList.add('blink');
+    document.getElementById('mortys-score').textContent = opponentsScore;
+    // tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
+    // * mortyGiphLibrary.length)]);
+    // checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
-    opponentWinnerText.textContent = 'TIE';
-    playerWinnerText.textContent = "TIE";
-    opponentWinnerIndicator.classList.remove('hidden');
-    playerWinnerIndicator.classList.remove('hidden');
+    // opponentWinnerText.textContent = 'TIE';
+    // playerWinnerText.textContent = "TIE";
+    // opponentWinnerIndicator.classList.remove('hidden');
+    // playerWinnerIndicator.classList.remove('hidden');
     playCount ++
-    checkScore();
+    // checkScore();
   }
 }
 
