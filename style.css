@@ -217,13 +217,13 @@ align-self: center;
   display: none;
 }
 
-.television, .gif {
+/* .television, .gif {
   position: relative;
   top: 0;
   left: 0;
   /* width: 100%;
   height: 100%; */
-}
+} */
 
 
 .tv-img{
@@ -234,12 +234,12 @@ align-self: center;
 
 }
 
-.gif{
-position: absolute;
-  top: 115px;
-  left: 20px;
-z-index: -1;
-width: 260px;
+.gif {
+    position: relative;
+    top: 43px;
+    left: 50px;
+    z-index: -1;
+    width: 262px;
 }
 
 

@@ -165,8 +165,8 @@ function checkBattle (){
     indicatorText.textContent = 'Rick Wins';
     indicatorText.classList.remove('hidden');
     indicatorText.classList.add('blink');
-    // tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
-    // * rickGiphLibrary.length)]);
+    tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
+    * rickGiphLibrary.length)]);
     // checkScore();
 
   } else if (currentCard.strength < currentOpponentCard.strength){
@@ -181,8 +181,8 @@ function checkBattle (){
     indicatorText.textContent = 'Morty Wins'
     indicatorText.classList.remove('hidden');
     indicatorText.classList.add('blink');
-    // tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
-    // * mortyGiphLibrary.length)]);
+    tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
+    * mortyGiphLibrary.length)]);
     // checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
     // opponentWinnerText.textContent = 'TIE';
