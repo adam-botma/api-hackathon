@@ -1,8 +1,9 @@
 .container {
-  width: 80%;
+  width: 90%;
   max-width: 1500px;
   margin: .7rem auto;
   height: 100%;
+  display: flex;
 
 
 }

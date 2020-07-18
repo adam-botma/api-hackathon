@@ -18,7 +18,7 @@ function buildGiphyLibrary (url, library) {
   function successfulCall(e) {
 
     for (var index = 0; index < e.data.length ; index++){
-      if(e.data[index].images.original.height === e.data[index].images.original.width){
+      if(e.data[index].images.original.height/e.data[index].images.original.width == 0.5625){
       library.unshift(e.data[index].images.original.url);
       }
     }
