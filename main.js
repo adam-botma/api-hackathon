@@ -21,14 +21,12 @@ var opponentCardStrength = document.getElementById('charStrengthOpponent');
 var opponentCardName = document.getElementById('charNameOpponent');
 var playerWinnerIndicator = document.getElementById('player-winner');
 var opponentWinnerIndicator = document.getElementById('opponent-winner');
-var playerWinnerGIF = document.getElementById('player-winner-gif');
-var opponentWinnerGIF = document.getElementById('opponent-winner-gif');
+
 var winnerGifEnd = document.getElementById('winner-gif');
 const indicatorText = document.getElementById('indicator-text');
 const ricksCardToFlip = document.getElementById('ricks-actual-card');
 const mortysCardToFlip = document.getElementById('mortys-actual-card');
-// var opponentWinnerText = document.getElementById('blink-text-opponent');
-// var playerWinnerText = document.getElementById('blink-text-you');
+
 var tvGif = document.getElementById('tv-gif');
 var quickAudio;
 var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
@@ -219,8 +217,8 @@ function resetGame () {
   playCount = 0;
   document.getElementById('ricks-score').textContent = 0;
   document.getElementById('mortys-score').textContent = 0;
-  playerCard.style.backgroundImage = "";
-  opponentCard.style.backgroundImage = "";
+  // playerCard.style.backgroundImage = "";
+  // opponentCard.style.backgroundImage = "";
   playerCardImage.style.backgroundImage = '';
   playerCardImage.style.border = "";
   playerCardStrength.textContent = '';
