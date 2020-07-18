@@ -236,8 +236,8 @@ align-self: center;
 
 .gif {
     position: relative;
-    top: 43px;
-    left: 50px;
+    /* top: 43px;
+    left: 50px; */
     z-index: -1;
     width: 262px;
 }
@@ -382,7 +382,10 @@ align-self: center;
   background-image: url(/images/picture-frame.gif);
   background-size: contain;
   background-repeat: no-repeat;
-
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
 
@@ -415,6 +418,21 @@ border: none;
 outline: none;
 }
 
+.winnerText{
+  font-family: 'Press Start 2P', cursive;;
+}
+
+.reset-button{
+
+background: black;
+border-radius: 10px;
+font-family: 'Press Start 2P', cursive;
+color: white;
+padding: 1rem 2rem;
+border: solid white 2px;
+
+}
+
 
 
 
@@ -442,7 +460,7 @@ and (orientation : landscape) {
   }
 
   .game-button{
-    width: 230px;
+    width: 200px;
     height: 58px;
     font-size: 18px;
   }
@@ -451,6 +469,22 @@ and (orientation : landscape) {
     font-size: 18px;
   }
 
+  .gif{
+    width: 162px;
+  }
+
+  .winnerText{
+    font-size: 20px;
+  }
+
+  .character-img{
+    width: 95px;
+    height: 95px;
+  }
+
+  .character-name{
+    font-size: 14px;
+  }
 }
 
 /* iPhone X  */
@@ -487,6 +521,22 @@ and (orientation : landscape) {
   font-size: 18px;
 }
 
+ .gif{
+    width: 162px;
+  }
+
+  .winnerText{
+    font-size: 20px;
+  }
+
+  .character-img{
+    width: 95px;
+    height: 95px;
+  }
+
+   .character-name{
+    font-size: 14px;
+  }
 
 }
 
@@ -496,8 +546,6 @@ and (max-device-width : 1024px)
 and (orientation : landscape){
 
 
-  .picture-frame{
-    margin: 0;
-  }
+
 
 }
