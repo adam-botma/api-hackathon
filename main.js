@@ -80,7 +80,7 @@ function playRound () {
 //   opponentCard.className = "opponent-played-card-slot";
 //   pickRandomCard(rickDeck);
 //     opponentsTurn(mortyDeck);
-//     checkBattle();
+
 }
 
 
@@ -89,8 +89,8 @@ function playRound () {
 
 function checkScore(){
   if (playCount === 10) {
-    playerWinnerGIF.setAttribute('src', '');
-    opponentWinnerGIF.setAttribute('src', '');
+    // playerWinnerGIF.setAttribute('src', '');
+    // opponentWinnerGIF.setAttribute('src', '');
     quickAudio.pause();
     if (yourScore > opponentsScore) {
       winnerModalText.textContent = 'you won!';
@@ -167,7 +167,7 @@ function checkBattle (){
     indicatorText.classList.add('blink');
     tvGif.setAttribute('src', rickGiphLibrary[Math.floor(Math.random()
     * rickGiphLibrary.length)]);
-    // checkScore();
+    checkScore();
 
   } else if (currentCard.strength < currentOpponentCard.strength){
     playGameAudio(mortyAudioArray);
@@ -183,7 +183,7 @@ function checkBattle (){
     indicatorText.classList.add('blink');
     tvGif.setAttribute('src', mortyGiphLibrary[Math.floor(Math.random()
     * mortyGiphLibrary.length)]);
-    // checkScore();
+    checkScore();
   } else if (currentCard.strength === currentOpponentCard.strength){
     // opponentWinnerText.textContent = 'TIE';
     // playerWinnerText.textContent = "TIE";
@@ -193,7 +193,7 @@ function checkBattle (){
     indicatorText.classList.remove('hidden');
     indicatorText.classList.add('blink');
     playCount ++
-    // checkScore();
+    checkScore();
   }
   setTimeout(()=> {
     ricksCardToFlip.classList.remove('the-card-flip');
@@ -217,8 +217,8 @@ function resetGame () {
   yourScore = 0;
   opponentsScore = 0;
   playCount = 0;
-  document.getElementById('theScore').textContent = 0;
-  document.getElementById('opponentsScore').textContent = 0;
+  document.getElementById('ricks-score').textContent = 0;
+  document.getElementById('mortys-score').textContent = 0;
   playerCard.style.backgroundImage = "";
   opponentCard.style.backgroundImage = "";
   playerCardImage.style.backgroundImage = '';

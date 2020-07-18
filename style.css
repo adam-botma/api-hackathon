@@ -370,6 +370,7 @@ align-self: center;
 .character-name{
   margin: 0;
   color: white;
+  text-align: center;
 }
 
 .the-card-flip{
