@@ -1,5 +1,5 @@
 
-var apiKey = 'IfQlruZk7GWmDGMkJV0vuYJ7FIhwn0co';
+
 var mortyGiphyURL = 'https://api.giphy.com/v1/gifs/search?api_key='+apiKey+'&q=morty smith&limit=75&offset=0&rating=PG-13&lang=en';
 var rickGiphyURL = 'https://api.giphy.com/v1/gifs/search?api_key='+apiKey+'&q=rick sanchez&limit=75&offset=0&rating=PG-13&lang=en';
 var bothGiphyURL = 'https://api.giphy.com/v1/gifs/search?api_key='+apiKey+'&q=rick and morty&limit=75&offset=0&rating=G&lang=en';
