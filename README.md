@@ -1,5 +1,5 @@
 # Rick and Morty Battle Royale
-Front End Javascript Card Game utilziing data from the<a href='https://rickandmortyapi.com/'> Rick and Morty API</a> and <a href='https://developers.giphy.com/docs/api/'>Giphy API</a>. User plays with a deck of Ricks and tries to defeat the Mortys in a card game similar to <a href='https://en.wikipedia.org/wiki/War_(card_game)'>War</a>
+Front End Javascript Card Game utilziing data from the<a href='https://rickandmortyapi.com/'> Rick and Morty API</a> and <a href='https://developers.giphy.com/docs/api/'>Giphy API</a>. User plays with a deck of Ricks and tries to defeat the Morties in a card game similar to <a href='https://en.wikipedia.org/wiki/War_(card_game)'>War</a>
 
 
 ## Live Demo
