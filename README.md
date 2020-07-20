@@ -1,2 +1,2 @@
-# api-hackathon
+# Rick and Morty Battle Royale
 A hackathon project utilizing the data from two public APIs to create .
