@@ -18,9 +18,9 @@ https://rm-battle-royale.adambotma.com/
 7. After Clicking, the Ricks' top card is flipped displaying the card's character image, name, and card strength. 
 8. After the Ricks' card is flipped, the Morty/opponent's card is flipped displaying the same data.
 9. The higher strengthed card is determined the winner, and the following actions occur to allow the User to know who won the battle:
-  * A small alert displays on the right of the screen telling the player whether "Rick Won", "Morty Won", or there was a "Tie."
-  * A Giphy gif associated with the given winner is displayed in the Picture Frame in the upper right corner.
-  * Audio associated with the winner is played (currently desktop only). 
+   * A small alert displays on the right of the screen telling the player whether "Rick Won", "Morty Won", or there was a "Tie."
+   * A Giphy gif associated with the given winner is displayed in the Picture Frame in the upper right corner.
+   * Audio associated with the winner is played (currently desktop only). 
 10. After all the winner's alerts are displayed/played, the cards are automatically discarded/flipped and the next round is able to begin by clicking the "Play Card Button."
 11. User continues with this until 10 rounds are played.  
 12. At the end of 10 rounds, the player with the most points is determined the winner, and a winner's modal is displayed to alert the user.
