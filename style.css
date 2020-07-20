@@ -311,7 +311,6 @@ align-self: center;
   position: relative;
   height: 320px;
   width: 224px;
-  /* background-image: url(/images/rick-morty-card-back.png); */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -335,6 +334,7 @@ align-self: center;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  -webkit-backface-visibility: hidden
 }
 
 .card-back{
@@ -407,7 +407,7 @@ background: #153458;
 border-radius: 10px;
 width: 323px;
 height: 81px;
- font-family: 'Press Start 2P', cursive;
+font-family: 'Press Start 2P', cursive;
 font-style: normal;
 font-weight: normal;
 font-size: 28px;
