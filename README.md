@@ -27,3 +27,20 @@ https://rm-battle-royale.adambotma.com/
 13. Player is then given the option to play again, where the gameboard, card decks, and score are reset to begin the next game. 
 
 
+## Technologies Used
+
+* HTML5
+* CSS3
+* Javascript
+* REST APIs
+* JQuery (for AJAX calls)
+
+## Further Development Plans
+
+* Handle ties in game similar to actual War.
+* Add the ability for User to choose which deck to use.
+* Add additional decks for player to choose from. 
+
+## Screenshot
+
+![](images/rm-battle-royal-gameplay.gif)
