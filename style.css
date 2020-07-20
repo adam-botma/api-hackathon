@@ -4,247 +4,11 @@ body {
   background-repeat: no-repeat;
   margin: 0;
   overflow: hidden;
-
 }
 
-
-.left-stats, .right-stats{
-  height: 450px;
-  /* background-color: rgba(37, 222, 222, 0.39);
-  border: solid 5px rgb(37, 222, 222); */
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+button:hover{
+  cursor: pointer;
 }
-
-.game-board{
-  height: 600px;
-  background-color: rgba(0, 0, 128, .59);
-  border: solid 5px rgb(0, 0, 128);
-  border-radius: 10px;
-  margin: 0 3rem;
-  padding-bottom: .5rem;
-}
-
-.heading-row{
-  display: flex;
-  justify-content: center;
-}
-
-.footer {
-  display: flex;
-  justify-content: center;
-
-}
-
-
-
-.opponent-side, .player-side {
-  height: 50%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-
-}
-
-.opponent-side{
-  /* background-color: darkmagenta; */
-}
-
-.player-side {
-  /* background-color: darkorange; */
-}
-
-.deck-pile{
-  height: 100%;
-  width: 40%;
-  background-image: url(images/rick-morty-card-back.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.played-card-slot, .opponent-played-card-slot{
-
-  height: 100%;
-  width: 40%;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-
-
-.score{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-.score{
-  color: black;
-
-
-
-}
-
-/* .game-button{
-background: #153458;
-border-radius: 10px;
-width: 323px;
-height: 81px;
- font-family: 'Press Start 2P', cursive;
-font-style: normal;
-font-weight: normal;
-font-size: 28px;
-line-height: 28px;
-color: #FFFFFF;
-align-self: center;
-} */
-/* .game-button:active {
-	position:relative;
-  top:1px;
-
-} */
-
-.strength {
-  margin: 3rem 0 0;
-  color: white;
-}
-
-.character-name{
-  margin: 0;
-  color: white;
-}
-
-
-
-
-
-.modal{
-  position: fixed;
-  top: 25%;
-  left: 25%;
-  background-color: black;
-  height: 30%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  border: solid white 6px;
-  color: white;
-}
-
-.winner-modal{
-  margin: 0;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100%;
-  border: none;
-}
-
-.blink {
-	-webkit-animation: blink .75s linear infinite;
-	-moz-animation: blink .75s linear infinite;
-	-ms-animation: blink .75s linear infinite;
-	-o-animation: blink .75s linear infinite;
-	 animation: blink .75s linear infinite;
-}
-@-webkit-keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 1; }
-	50.01% { opacity: 0; }
-	100% { opacity: 0; }
-}
-@-moz-keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 1; }
-	50.01% { opacity: 0; }
-	100% { opacity: 0; }
-}
-@-ms-keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 1; }
-	50.01% { opacity: 0; }
-	100% { opacity: 0; }
-}
-@-o-keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 1; }
-	50.01% { opacity: 0; }
-	100% { opacity: 0; }
-}
-@keyframes blink {
-	0% { opacity: 1; }
-	50% { opacity: 1; }
-	50.01% { opacity: 0; }
-	100% { opacity: 0; }
-}
-
-
-.winner-gif{
-  height: 50%;
-}
-
-
-.gif-img{
-  width:100%;
-  margin: 0;
-}
-
-.score-title{
-  margin-bottom: 0;
-}
-.theScore{
-  margin-top: 0;
-}
-
-.heading-row > h1 {
-
-  color: black;
-}
-
-
-.hidden {
-  display: none;
-}
-
-/* .television, .gif {
-  position: relative;
-  top: 0;
-  left: 0;
-  /* width: 100%;
-  height: 100%; */
-} */
-
-
-.tv-img{
-    position: absolute;
-  top: 0;
-  left: 0;
-  width: 325px;
-
-}
-
-.gif {
-    position: relative;
-    /* top: 43px;
-    left: 50px; */
-    z-index: -1;
-    width: 262px;
-}
-
-
-
-/* NEW STYLING */
 
 .left-column{
   height: 100vh;
@@ -311,7 +75,6 @@ align-self: center;
   position: relative;
   height: 320px;
   width: 224px;
-  /* background-image: url(/images/rick-morty-card-back.png); */
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -335,6 +98,7 @@ align-self: center;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+  -webkit-backface-visibility: hidden;
 }
 
 .card-back{
@@ -377,6 +141,102 @@ align-self: center;
   transform: rotateY(180deg);
 }
 
+.strength {
+  margin: 3rem 0 0;
+  color: white;
+}
+
+.character-name{
+  margin: 0;
+  color: white;
+}
+
+.modal{
+  position: fixed;
+  top: 25%;
+  left: 25%;
+  background-color: black;
+  height: 30%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: solid white 6px;
+  color: white;
+}
+
+.winner-modal{
+  margin: 0;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  border: none;
+}
+
+.blink {
+	-webkit-animation: blink .75s linear infinite;
+	-moz-animation: blink .75s linear infinite;
+	-ms-animation: blink .75s linear infinite;
+	-o-animation: blink .75s linear infinite;
+	 animation: blink .75s linear infinite;
+}
+
+@-webkit-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-moz-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-ms-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@-o-keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+@keyframes blink {
+	0% { opacity: 1; }
+	50% { opacity: 1; }
+	50.01% { opacity: 0; }
+	100% { opacity: 0; }
+}
+
+.winner-gif{
+  height: 50%;
+}
+
+.gif-img{
+  width:100%;
+  margin: 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.gif {
+    position: relative;
+    z-index: -1;
+    width: 262px;
+}
+
 .picture-frame{
   height: 230px;
   background-image: url(/images/picture-frame.gif);
@@ -386,7 +246,6 @@ align-self: center;
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .result {
@@ -403,19 +262,19 @@ align-self: center;
 }
 
 .game-button{
-background: #153458;
-border-radius: 10px;
-width: 323px;
-height: 81px;
- font-family: 'Press Start 2P', cursive;
-font-style: normal;
-font-weight: normal;
-font-size: 28px;
-line-height: 28px;
-color: #FFFFFF;
-align-self: center;
-border: none;
-outline: none;
+  background: #153458;
+  border-radius: 10px;
+  width: 323px;
+  height: 81px;
+  font-family: 'Press Start 2P', cursive;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 28px;
+  color: #FFFFFF;
+  align-self: center;
+  border: none;
+  outline: none;
 }
 
 .winnerText{
@@ -423,18 +282,13 @@ outline: none;
 }
 
 .reset-button{
-
-background: black;
-border-radius: 10px;
-font-family: 'Press Start 2P', cursive;
-color: white;
-padding: 1rem 2rem;
-border: solid white 2px;
-
+  background: black;
+  border-radius: 10px;
+  font-family: 'Press Start 2P', cursive;
+  color: white;
+  padding: 1rem 2rem;
+  border: solid white 2px;
 }
-
-
-
 
 
 /* iPhone 6/7/8 */
@@ -444,7 +298,19 @@ and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : landscape) {
 
+  .container{
+    margin: .7rem;
+  }
+
   .center-column{
+    height: 90vh;
+  }
+
+  .left-column{
+    height: 95vh;
+  }
+
+  .right-column{
     height: 95vh;
   }
 
@@ -485,6 +351,81 @@ and (orientation : landscape) {
   .character-name{
     font-size: 14px;
   }
+
+  .strength {
+    margin: .4rem 0 0;
+  }
+}
+
+@media only screen
+and (min-device-width : 375px)
+and (max-device-width : 667px)
+and (orientation : portrait) {
+
+  body {
+    height: 90vw;
+    transform: rotate(90deg);
+    background-image: url(/images/rick-and-morty-purple-pink-planet-wallpaper-portrait.jpg);
+  }
+
+  .container{
+    margin: .5rem;
+  }
+
+  .center-column{
+    height: 95vw;
+  }
+
+  .left-column{
+    height: 95vw;
+  }
+
+  .right-column{
+    height: 95vw;
+  }
+
+  .rick-score, .morty-score {
+    width: 193px;
+    height: 148px;
+  }
+
+  .picture-frame{
+    width: 201px;
+    height: 133px;
+    margin: 0 auto;
+  }
+
+  .game-button{
+    width: 200px;
+    height: 58px;
+    font-size: 18px;
+  }
+
+  .result > h2{
+    font-size: 18px;
+  }
+
+  .gif{
+    width: 162px;
+  }
+
+  .winnerText{
+    font-size: 20px;
+  }
+
+  .character-img{
+    width: 95px;
+    height: 95px;
+  }
+
+  .character-name{
+    font-size: 14px;
+  }
+
+  .strength{
+    margin: 1rem 0 0;
+  }
+
 }
 
 /* iPhone X  */
@@ -496,7 +437,7 @@ and (-webkit-device-pixel-ratio : 3)
 and (orientation : landscape) {
 
 
-  .center-column{
+.center-column{
   height: 95vh;
 }
 
@@ -521,31 +462,21 @@ and (orientation : landscape) {
   font-size: 18px;
 }
 
- .gif{
-    width: 162px;
-  }
-
-  .winnerText{
-    font-size: 20px;
-  }
-
-  .character-img{
-    width: 95px;
-    height: 95px;
-  }
-
-   .character-name{
-    font-size: 14px;
-  }
-
+.gif{
+   width: 162px;
 }
 
-@media only screen
-and (min-device-width : 768px)
-and (max-device-width : 1024px)
-and (orientation : landscape){
+.winnerText{
+  font-size: 20px;
+}
 
+.character-img{
+   width: 95px;
+   height: 95px;
+}
 
-
+.character-name{
+  font-size: 14px;
+  }
 
 }
