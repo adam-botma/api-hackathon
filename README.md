@@ -1,13 +1,13 @@
-## Rick and Morty Battle Royale
+# Rick and Morty Battle Royale
 Front End Javascript Card Game utilziing data from the<a href='https://rickandmortyapi.com/'> Rick and Morty API</a> and <a href='https://developers.giphy.com/docs/api/'>Giphy API</a>. User plays with a deck of Ricks and tries to defeat the Mortys in a card game similar to <a href='https://en.wikipedia.org/wiki/War_(card_game)'>War</a>
 
 
-# Live Demo
+## Live Demo
 
 https://rm-battle-royale.adambotma.com/
 
 
-# Functionality Overview
+## Functionality Overview
 
 1. War is a game in which each player flips the card on the top of their respective deck, each card has a given strength value, and the card with the highest value wins that battle.  
 2. When a player wins a battle, they are given a point. 
