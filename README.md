@@ -40,6 +40,7 @@ https://rm-battle-royale.adambotma.com/
 * Handle ties in game similar to actual War.
 * Add the ability for User to choose which deck to use.
 * Add additional decks for player to choose from. 
+* Add the ability for User to hover over the card to get additional information about each character from the Rick and Morty API.
 
 ## Screenshot
 
