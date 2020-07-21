@@ -22,11 +22,14 @@ var indicatorText = document.getElementById('indicator-text');
 var ricksCardToFlip = document.getElementById('ricks-actual-card');
 var mortysCardToFlip = document.getElementById('mortys-actual-card');
 var tvGif = document.getElementById('tv-gif');
-var soundOn = true;
+var soundOn = false;
 var quickAudio;
 var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
 var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
 var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
+tieSound.muted = true;
+rickWin.muted = true;
+mortyWin.muted = true;
 var soundIcon = document.getElementById('sound-icon');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
