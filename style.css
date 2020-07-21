@@ -2,7 +2,7 @@ body {
   background-image: url(/images/rick-and-morty-purple-pink-planet-wallpaper.jpg);
   background-size: cover;
   background-repeat: no-repeat;
-  margin: 0;
+  margin: 3rem;
   overflow: hidden;
 }
 
@@ -10,17 +10,21 @@ button:hover{
   cursor: pointer;
 }
 
+.container{
+  margin: 70px auto 100px auto;
+}
+
 .left-column{
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .center-column{
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -29,11 +33,11 @@ button:hover{
 }
 
 .right-column{
-  height: 100vh;
+  height: 80vh;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .rick-score{
@@ -298,6 +302,10 @@ and (min-device-width : 375px)
 and (max-device-width : 667px)
 and (orientation : landscape) {
 
+  body{
+    margin: 0;
+  }
+
   .container{
     margin: .7rem;
   }
@@ -366,6 +374,7 @@ and (orientation : portrait) {
     height: 90vw;
     transform: rotate(90deg);
     background-image: url(/images/rick-and-morty-purple-pink-planet-wallpaper-portrait.jpg);
+    margin: 2rem 1rem 0 1rem;
   }
 
   .container{
@@ -478,5 +487,49 @@ and (orientation : landscape) {
 .character-name{
   font-size: 14px;
   }
+
+}
+
+
+/* iPad */
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+
+body{
+  margin: 3rem 0;
+}
+
+}
+
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : portrait){
+
+  body {
+    height: 90vw;
+    transform: rotate(90deg);
+    margin: 3rem 0;
+    background-image: url(/images/rick-and-morty-purple-pink-planet-wallpaper-portrait.jpg);
+  }
+
+  .left-column{
+    height: 100%;
+  }
+
+  .center-column{
+    height: 100%;
+  }
+
+  .right-column{
+    height: 100%;
+  }
+
+  .container {
+    margin: 70px auto 100px auto;
+    width: 950px;
 
 }

@@ -22,13 +22,37 @@ var indicatorText = document.getElementById('indicator-text');
 var ricksCardToFlip = document.getElementById('ricks-actual-card');
 var mortysCardToFlip = document.getElementById('mortys-actual-card');
 var tvGif = document.getElementById('tv-gif');
+var soundOn = true;
 var quickAudio;
 var tieSound = new Audio('https://sound.peal.io/ps/audios/000/000/547/original/Oooo_yeah__caaan_doo!.wav')
 var rickWin = new Audio('https://sound.peal.io/ps/audios/000/000/543/original/lick_my_balls.wav');
 var mortyWin = new Audio('https://sound.peal.io/ps/audios/000/000/978/original/youtube.mp3');
+var soundIcon = document.getElementById('sound-icon');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 document.getElementById('deal').addEventListener('click', playRound);
+document.getElementById('volume').addEventListener('click', ()=> {changeSoundOption()});
 startApp();
+
+
+function changeSoundOption (){
+  if(soundOn === true){
+    tieSound.muted = true;
+    rickWin.muted = true;
+    mortyWin.muted = true;
+    tieSound.pause();
+    rickWin.pause();
+    mortyWin.pause();
+    soundOn = false;
+    soundIcon.className = 'fas fa-volume-mute';
+  } else {
+    tieSound.muted = false;
+    rickWin.muted = false;
+    mortyWin.muted = false;
+    soundOn = true;
+    soundIcon.className = 'fas fa-volume-up';
+  }
+}
+
 
 
 function apiCall(url) {
@@ -120,7 +144,9 @@ function opponentsTurn(playerDeck){
 
 function checkBattle (){
   if( currentCard.strength > currentOpponentCard.strength){
+    if(soundOn === true){
     playGameAudio(rickAudioArray);
+    }
     yourScore ++
     playCount ++
     document.getElementById('ricks-score').textContent = yourScore;
@@ -132,10 +158,11 @@ function checkBattle (){
     checkScore();
 
   } else if (currentCard.strength < currentOpponentCard.strength){
+    if(soundOn === true){
     playGameAudio(mortyAudioArray);
+    }
     opponentsScore ++
     playCount ++
-
     document.getElementById('mortys-score').textContent = opponentsScore;
     indicatorText.textContent = 'Morty Wins'
     indicatorText.classList.remove('hidden');
