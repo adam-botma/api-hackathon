@@ -31,8 +31,9 @@ tieSound.muted = true;
 rickWin.muted = true;
 mortyWin.muted = true;
 var soundIcon = document.getElementById('sound-icon');
+var dealButton = document.getElementById('deal');
 document.getElementById('reset-button').addEventListener('click', resetGame);
-document.getElementById('deal').addEventListener('click', playRound);
+dealButton.addEventListener('click', playRound);
 document.getElementById('volume').addEventListener('click', ()=> {changeSoundOption()});
 startApp();
 
@@ -84,6 +85,7 @@ function failedCall(e) {
 
 
 function playRound () {
+  dealButton.disabled = true;
   pickRandomCard(rickDeck);
   opponentsTurn(mortyDeck);
   ricksCardToFlip.classList.add('the-card-flip');
@@ -112,6 +114,7 @@ function checkScore(){
     }
 
   }
+
 }
 
 
@@ -186,6 +189,7 @@ function checkBattle (){
     mortysCardToFlip.classList.remove('the-card-flip');
     indicatorText.classList.remove('blink');
     indicatorText.classList.add('hidden');
+    dealButton.disabled = false;
   }, 3000)
 }
 
