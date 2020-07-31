@@ -14,6 +14,7 @@ button:hover{
   margin: 70px auto 100px auto;
 }
 
+
 .left-column{
   height: 80vh;
   width: 100%;
@@ -170,6 +171,23 @@ button:hover{
   color: white;
 }
 
+.start-modal{
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  font-family: 'Press Start 2P', cursive;
+  background-image: url(/images/space-background.jpg);
+
+}
+
+.start-modal > h1{
+  font-size: 20px;
+}
+
 .winner-modal{
   margin: 0;
   top: 0;
@@ -177,6 +195,11 @@ button:hover{
   height: 100vh;
   width: 100%;
   border: none;
+  background-color: rgb(6, 7, 11);
+}
+
+.start-image{
+  height: 400px;
 }
 
 .blink {
@@ -363,6 +386,11 @@ and (orientation : landscape) {
   .strength {
     margin: .4rem 0 0;
   }
+
+  .start-image {
+    height: 290px;
+}
+
 }
 
 @media only screen
@@ -435,6 +463,21 @@ and (orientation : portrait) {
     margin: 1rem 0 0;
   }
 
+  .start-image {
+    height: 290px;
+}
+
+.start-modal {
+    height: 400px;
+    width: 690px;
+    top: -20px;
+    left: -48px;
+    right: 0;
+    bottom: 0;
+    border: 0;
+    font-family: 'Press Start 2P', cursive;
+    background-image: url(/images/space-background.jpg);
+}
 }
 
 /* iPhone X  */
@@ -488,6 +531,10 @@ and (orientation : landscape) {
   font-size: 14px;
   }
 
+  .start-image {
+    height: 290px;
+}
+
 }
 
 
@@ -510,9 +557,9 @@ and (max-device-width : 1024px)
 and (orientation : portrait){
 
   body {
-    height: 90vw;
+    height: 100vw;
     transform: rotate(90deg);
-    margin: 3rem 0;
+    /* margin: 3rem 0; */
     background-image: url(/images/rick-and-morty-purple-pink-planet-wallpaper-portrait.jpg);
   }
 
@@ -531,5 +578,11 @@ and (orientation : portrait){
   .container {
     margin: 70px auto 100px auto;
     width: 950px;
+  }
+
+  .start-modal{
+    width: 1024px;
+    left: -118px;
+  }
 
 }
