@@ -32,11 +32,24 @@ rickWin.muted = true;
 mortyWin.muted = true;
 var soundIcon = document.getElementById('sound-icon');
 var dealButton = document.getElementById('deal');
+var startModal = document.getElementById('start-modal');
+var startText = document.getElementById('start-text');
 document.getElementById('reset-button').addEventListener('click', resetGame);
 dealButton.addEventListener('click', playRound);
 document.getElementById('volume').addEventListener('click', ()=> {changeSoundOption()});
 startApp();
 
+
+document.onkeypress = function (e) {
+  if (e.keyCode == 32) {
+    startModal.classList.add('hidden');
+  }
+}
+
+// if (navigator.userAgent.match(/Mobile/)) {
+//   startText.textContent = 'Tap to Start';
+//   startModal.addEventListener('click', () => startModal.classList.add('hidden'));
+// }
 
 function changeSoundOption (){
   if(soundOn === true){
@@ -75,12 +88,19 @@ function successfulCall(e) {
   } else if (e.results[0].name === 'Morty Smith') {
     mortyData = e.results;
     fillCards(mortyData, mortyDeck);
+    if (navigator.userAgent.match(/Mobile/)) {
+      startText.textContent = 'Tap to Start';
+      startModal.addEventListener('click', () => startModal.classList.add('hidden'));
+    } else {
+      startText.textContent = 'Press Space to Start';
+    }
   }
 }
 
 
 function failedCall(e) {
   console.log('fail', e);
+  startText.textContent = 'Network Error: please try again'
 }
 
 
@@ -222,8 +242,10 @@ function resetGame () {
 
 
 function startApp() {
+  startText.textContent = '...loading'
   apiCall(rickURL);
   apiCall(mortyURL);
   buildGiphyLibrary(rickGiphyURL, rickGiphLibrary);
   buildGiphyLibrary(mortyGiphyURL, mortyGiphLibrary);
+
 }
