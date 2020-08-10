@@ -375,13 +375,21 @@ and (orientation : landscape) {
   }
 
   .character-img{
+    margin-top: 5px;
     width: 95px;
     height: 95px;
   }
 
-  .character-name{
-    font-size: 14px;
+  .card-back{
+    justify-content: space-between;
   }
+
+  .character-name {
+    font-size: 12px;
+    width: 45%;
+    margin-bottom: 5px;
+    padding: 0 2px;
+}
 
   .strength {
     margin: .4rem 0 0;
@@ -455,9 +463,12 @@ and (orientation : portrait) {
     height: 95px;
   }
 
-  .character-name{
-    font-size: 14px;
-  }
+  .character-name {
+    font-size: 12px;
+    width: 45%;
+    margin-bottom: 5px;
+    padding: 0 2px;
+}
 
   .strength{
     margin: 1rem 0 0;
@@ -549,6 +560,27 @@ body{
   margin: 3rem 0;
 }
 
+ .strength{
+    margin-top: 0;
+    font-size: 2rem;
+  }
+
+   .character-img{
+    margin-top: 15px;
+
+  }
+
+  .card-back{
+    justify-content: space-between;
+  }
+
+  .character-name {
+    font-size: 22px;
+    width: 70%;
+    margin-bottom: 15px;
+    padding: 0 2px;
+}
+
 }
 
 @media only screen
@@ -584,5 +616,7 @@ and (orientation : portrait){
     width: 1024px;
     left: -118px;
   }
+
+
 
 }
