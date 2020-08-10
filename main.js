@@ -115,7 +115,9 @@ function playRound () {
 
 function checkScore(){
   if (playCount === 10) {
+    if(quickAudio){
     quickAudio.pause();
+    }
     if (yourScore > opponentsScore) {
       winnerModalText.textContent = 'you won!';
       winnerGifEnd.setAttribute('src', 'https://media.giphy.com/media/IdZpAop5IISbK2iePU/giphy.gif');
